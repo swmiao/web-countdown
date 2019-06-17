@@ -1,0 +1,49 @@
+<script>
+    let interval = null;
+
+    function start() {
+        if (interval) {
+            clearInterval(interval);
+        }
+        const duration = document.getElementById("duration").value;
+        let seconds = duration;
+        interval = setInterval(function () {
+            document.getElementById("demo").innerHTML = seconds--;
+            if (seconds === 0) {
+                seconds = duration;
+            }
+        }, 1000);
+    }
+
+    function displayDiv() {
+        document.getElementById("setDiv").setAttribute("style", "opacity: 0.9");
+    }
+
+    function hideDiv() {
+        document.getElementById("setDiv").setAttribute("style", "opacity: 0.3");
+    }
+</script>
+<style>
+    #mainBody {
+        text-align: center;
+        font-size: 26;
+    }
+
+    #duration {
+        margin-top: 5%
+    }
+
+    #demo {
+        text-align: center;
+        width: 40%;
+        background-color: lightblue;
+        font-size: 36;
+        margin-left: 30%;
+    }
+</style>
+<div id="mainBody">
+    <div id="setDiv" onmouseover="displayDiv()" onmouseout="hideDiv()">Input the Interval: <input id="duration"
+            onchange="start()"></div>
+
+    <p id="demo"></p>
+</div>
